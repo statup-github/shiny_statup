@@ -20,7 +20,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir -p /opt/shiny_bookmark_state \
-    && chown shiny:shiny /opt/shiny_bookmark_state
+    && chown shiny:shiny /opt/shiny_bookmark_state \
+    && chown -R shiny:shiny /opt/microsoft/ropen/3.5.0/lib64/R/library
 
 #    && wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION -O "version.txt" \
 #    && VERSION=$(cat version.txt)  \
