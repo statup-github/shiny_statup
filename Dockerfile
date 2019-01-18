@@ -20,6 +20,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends gdebi-core \
     && wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-${SHINYVERSION}-amd64.deb \
     && gdebi -n shiny-server-${SHINYVERSION}-amd64.deb \
+    && rm shiny-server-${SHINYVERSION}-amd64.deb \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir -p /opt/shiny_bookmark_state \
