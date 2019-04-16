@@ -6,15 +6,9 @@ ENV SHINYVERSION="1.5.9.923"
 
 EXPOSE 3838
 
-RUN mkdir -p /var/log/shiny-server \
-    && useradd -m shiny \
-    && chown shiny:shiny /var/log/shiny-server \
-    && cp -R /opt/microsoft/ropen/${RVERSION}/lib64/R/library/shiny/examples/03_reactivity /app \
-    && chown shiny:shiny /app
-
 COPY shiny.sh /etc/service/shiny/run
-
 RUN chmod +x /etc/service/shiny/run
+RUN useradd -m shiny
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gdebi-core \
@@ -25,7 +19,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir -p /opt/shiny_bookmark_state \
     && chown shiny:shiny /opt/shiny_bookmark_state \
-    && chown -R shiny:shiny /opt/microsoft/ropen/${RVERSION}/lib64/R/library
-
+    && chown -R shiny:shiny /opt/microsoft/ropen/${RVERSION}/lib64/R/library \
+    && mkdir -p /var/log/shiny-server \
+    && chown shiny:shiny /var/log/shiny-server \
+    && cp -R /opt/microsoft/ropen/${RVERSION}/lib64/R/library/shiny/examples/03_reactivity /app \
+    && chown shiny:shiny /app
+    
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
