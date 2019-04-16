@@ -8,7 +8,7 @@ EXPOSE 3838
 
 COPY shiny.sh /etc/service/shiny/run
 RUN chmod +x /etc/service/shiny/run
-RUN useradd -m shiny
+RUN useradd -m -u 1000 shiny
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gdebi-core \
