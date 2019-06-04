@@ -1,7 +1,7 @@
-FROM stefanfritsch/r_statup:3.5.1
+FROM stefanfritsch/r_statup:3.5.3
 MAINTAINER Stefan Fritsch <stefan.fritsch@stat-up.com>
 
-ENV RVERSION="3.5.1"
+ENV RVERSION="3.5.3"
 ENV SHINYVERSION="1.5.9.923"
 
 EXPOSE 3838
